@@ -1,0 +1,7 @@
+{
+  "name": "Social Post Card Generator",
+  "description": "Generate viral multi-slide TikTok & Instagram carousels from GitHub repos or JSON: Cover hook, up to 5 repos with character mascot windows, How to Install end slide, n8n pipeline, and CLI export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

@@ -1,0 +1,165 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ViralGitHubCarouselData",
+  "description": "Standardized schema for high-converting TikTok & Instagram 9:16 developer carousel presentations.",
+  "type": "object",
+  "required": [
+    "topic",
+    "coverTitle",
+    "coverTitleAccent",
+    "coverSubtitle",
+    "editionBadge",
+    "theme",
+    "repos",
+    "installSlide"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this carousel batch"
+    },
+    "topic": {
+      "type": "string",
+      "description": "High-level topic or niche, e.g. 'This Week's Trending GitHub Repos'",
+      "maxLength": 60
+    },
+    "coverTitle": {
+      "type": "string",
+      "description": "Bold black/white lead part of the cover headline (e.g. '5 insane open-source tools')",
+      "maxLength": 50
+    },
+    "coverTitleAccent": {
+      "type": "string",
+      "description": "Italic accented punchline of the cover headline (e.g. 'you need to try.')",
+      "maxLength": 40
+    },
+    "coverSubtitle": {
+      "type": "string",
+      "description": "Subheading explaining the value proposition under the headline",
+      "maxLength": 160
+    },
+    "editionBadge": {
+      "type": "string",
+      "description": "Capsule badge label at the top of the cover (e.g. 'WEEKLY GITHUB REPORT')",
+      "maxLength": 35
+    },
+    "theme": {
+      "type": "string",
+      "enum": [
+        "editorial-cream",
+        "dark-neo",
+        "cyber-slate",
+        "sunset-minimal",
+        "monochrome",
+        "neon-cyberpunk",
+        "luxury-gold",
+        "tokyo-night",
+        "nordic-frost"
+      ],
+      "default": "editorial-cream"
+    },
+    "repos": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "repoName",
+          "fullRepo",
+          "headlineLead",
+          "headlineAccent",
+          "summary",
+          "punchline",
+          "stars",
+          "starsNumeric",
+          "language",
+          "badge",
+          "cloneCommand"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "repoName": { "type": "string", "maxLength": 30 },
+          "fullRepo": { "type": "string", "description": "e.g. 'owner/repo'" },
+          "url": { "type": "string" },
+          "headlineLead": { "type": "string", "description": "Bold lead of repo hook", "maxLength": 45 },
+          "headlineAccent": { "type": "string", "description": "Italic colored accent of repo hook", "maxLength": 35 },
+          "summary": { "type": "string", "description": "1-2 sentences explaining what the tool does", "maxLength": 180 },
+          "punchline": { "type": "string", "description": "Short, punchy outcome or kicker", "maxLength": 90 },
+          "stars": { "type": "string", "description": "Formatted star count e.g. '22.8k'" },
+          "starsNumeric": { "type": "number" },
+          "language": { "type": "string" },
+          "badge": { "type": "string", "description": "Micro category tag e.g. 'MCP Tool', 'AI Agent'" },
+          "cardDescription": { "type": "string" },
+          "cloneCommand": { "type": "string" },
+          "useCases": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "installSlide": {
+      "type": "object",
+      "required": [
+        "titleLead",
+        "titleAccent",
+        "description",
+        "cloneHighlightRepo",
+        "agentPromptText",
+        "ctaTextLead",
+        "ctaTextAccent",
+        "followButtonText",
+        "saveButtonText"
+      ],
+      "properties": {
+        "titleLead": { "type": "string", "default": "How to" },
+        "titleAccent": { "type": "string", "default": "install." },
+        "description": { "type": "string", "maxLength": 240 },
+        "cloneHighlightRepo": { "type": "string" },
+        "agentPromptText": { "type": "string", "default": "check these are legit, then set them up:" },
+        "ctaTextLead": { "type": "string", "default": "Save it now, you'll want this" },
+        "ctaTextAccent": { "type": "string", "default": "list later." },
+        "followButtonText": {
+          "type": "string",
+          "description": "Single-line CTA button. Recommended: '+ FOLLOW' or 'FOLLOW'.",
+          "default": "+ FOLLOW",
+          "maxLength": 22
+        },
+        "saveButtonText": {
+          "type": "string",
+          "description": "Single-line save/bookmark CTA. Recommended: 'SAVE THIS'.",
+          "default": "SAVE THIS",
+          "maxLength": 22
+        },
+        "buttonStyle": {
+          "type": "string",
+          "enum": ["pill-capsule", "modern-squircle", "stacked-full", "segmented-bar"],
+          "default": "pill-capsule"
+        },
+        "agentTip": {
+          "type": "string",
+          "default": "Works with Cursor • Claude 3.7 • ChatGPT • Gemini"
+        }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "properties": {
+        "maxRepos": { "type": "number", "default": 5 },
+        "showSwipeHints": { "type": "boolean", "default": true },
+        "aspectRatio": {
+          "type": "string",
+          "enum": ["vertical-9-16", "square-1-1", "portrait-4-5"],
+          "default": "vertical-9-16"
+        },
+        "buttonStyle": {
+          "type": "string",
+          "enum": ["pill-capsule", "modern-squircle", "stacked-full", "segmented-bar"],
+          "default": "pill-capsule"
+        }
+      }
+    }
+  }
+}
